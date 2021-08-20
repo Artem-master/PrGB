@@ -1,21 +1,30 @@
-public class Cat extends Animals {
-    static int countCat;
-    Cat(String name) {
-        super(name);
-        count++;
-        countCat++;
+public class Cat {
+    private boolean Fullplate;
+    private String name;
+    private int appetite;
+
+    public Cat (String name, int appetite) {
+        this.name = name;
+        this. appetite = appetite;
+        Fullplate = false;
     }
-    void swim (int s) {
-        if (s > 0) {
-            System.out.println(name + " - кошки не плавают");
+
+    public void eat (Plate plate) {
+        plate.consumption(appetite);
+        if (plate.rash(appetite) && !Fullplate)
+        {
+            System.out.println(name + " кушает.");
+            plate.rash(appetite);
+            Fullplate = true;
         }
-    }
-    void run (int r) {
-        if (r > 200) {
-            r = 200;
-            System.out.println(name + " Кошки пробегаеют максимум " + r + " метров");
+        else if (!plate.rash(appetite))
+        {
+            System.out.println(name + " не хватает еды");
         }
-        System.out.println(name + " пробегает " + r + " метров");
+        else if (Fullplate)
+        {
+            System.out.println(name + " сыта!");
+        }
     }
 }
 
